@@ -2,19 +2,24 @@ package edu.icet.controller;
 
 import edu.icet.Dto.Student;
 import edu.icet.Services.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
+@RequestMapping
+@RequiredArgsConstructor
 public class StudentController {
-    @Autowired
-    StudentService service;
+    
+    final StudentService service;
 
     @GetMapping
     public List<Student> getStudent(){
-        return service.getStudent();
+        List<Student> student = service.getStudent();
+        return student;
     }
 
     @PostMapping
